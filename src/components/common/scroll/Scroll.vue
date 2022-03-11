@@ -30,7 +30,7 @@ export default {
       probeType: 3,
       pullUpLoad: this.PullUpLoad
     })
-    this.scroll.on('pullingUp', () => {
+    this.PullUpLoad && this.scroll.on('pullingUp', () => {
       this.$emit('pullLoad')
     })
     // 判断是否滑动到 某个地方 然后显示backtop

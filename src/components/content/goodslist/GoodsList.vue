@@ -2,13 +2,16 @@
   <div class="GoodsList">
     <div v-for="item in goods"
          class="sb">
-      <goods-list-item :goods="item"></goods-list-item>
+      <goods-list-item :goods="item"
+                       @click.native="showGoods(item)"></goods-list-item>
     </div>
   </div>
 </template>
 
 <script>
 import GoodsListItem from './GoodsListItem.vue'
+
+import { getDetail } from '../../../network/detali'
 export default {
   name: 'GoodsList',
   data () {
@@ -27,7 +30,17 @@ export default {
 
   },
   methods: {
-
+    showGoods (item) {
+      getDetail(item.iid).then(res => {
+        // console.log(res);
+        this.$router.push({
+          path: 'detail',
+          query: {
+            data: res.data.result
+          }
+        })
+      })
+    }
   }
 }
 </script>

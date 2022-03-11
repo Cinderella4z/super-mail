@@ -7,6 +7,7 @@ import store from './store/index'
 
 Vue.prototype.$bus = new Vue();
 
+
 Vue.use(router)
 Vue.use(ElementUI);
 

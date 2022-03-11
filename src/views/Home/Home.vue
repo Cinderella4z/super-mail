@@ -56,12 +56,15 @@ export default {
     this.getHomeGoods('pop');
     this.getHomeGoods('sell');
     this.getHomeGoods('new');
+
     // 监听图片的加载
   },
   mounted () {
     this.$bus.$on('loadImg', () => {
       this.$refs.scroll && this.$refs.scroll.scroll.refresh()
     })
+
+
   },
   components: {
     NavBar, HomeSwiper, HomeRecommends, Tabcontrol, GoodsList, scroll, backTop
@@ -86,6 +89,7 @@ export default {
     backTop () {
       this.$refs.scroll.scrollTo(0, 0, 500)
     },
+
     // 网络封装
     getHomeMutidata () {
       getHomeMutidata().then(res => {

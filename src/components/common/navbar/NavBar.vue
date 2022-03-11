@@ -32,6 +32,8 @@ export default {
   line-height: 44px;
   text-align: center;
   display: flex;
+  /* opacity: 0.5; */
+  /* align-items: center; */
   width: 100%;
   position: fixed;
   z-index: 9;
@@ -42,6 +44,7 @@ export default {
 .right,
 .left {
   width: 60px;
+  /* background-color: aquamarine; */
 }
 .center {
   flex: 1;
