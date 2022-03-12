@@ -1,11 +1,13 @@
 <template>
   <div id="Category">
-    ss
+
   </div>
 </template>
 
 <script>
+import { getcategory } from '../../network/category'
 export default {
+
   name: 'Category',
   data () {
     return {
@@ -14,7 +16,8 @@ export default {
   },
   components: {
 
-  }
+  },
+
 }
 </script>
 

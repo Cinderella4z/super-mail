@@ -1,15 +1,15 @@
 import Vue from 'vue';
-import ElementUI from 'element-ui';
+
 
 import App from './App.vue';
 import router from './router'
 import store from './store/index'
-
+import { toest } from './components/common/toest/index'
 Vue.prototype.$bus = new Vue();
 
-
+Vue.use(toest)
 Vue.use(router)
-Vue.use(ElementUI);
+
 
 new Vue({
   el: '#app',

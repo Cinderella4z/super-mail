@@ -26,17 +26,17 @@ export default {
       this.current = k
       switch (i) {
         case '流行':
-          this.$emit('tab', 'pop')
+          this.$emit('tab', 'pop', k)
           break;
         case '新款':
-          this.$emit('tab', 'new')
+          this.$emit('tab', 'new', k)
           break;
 
         case '精品':
-          this.$emit('tab', 'sell')
+          this.$emit('tab', 'sell', k)
           break;
         default:
-          this.$emit('tab', 'pop')
+          this.$emit('tab', 'pop', k)
           break;
       }
     }

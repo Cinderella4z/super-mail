@@ -4,7 +4,7 @@
       <div slot="left"
            class="left"
            @click="back">
-        <img src="../../assets/images/detail/back.png">
+        <img src="../../assets/images/left.png">
       </div>
     </navbar>
 
@@ -22,6 +22,7 @@
 
     <backTop ref="backTop"
              @click.native="backTop"></backTop>
+    <tabbar :good="data"></tabbar>
 
   </div>
 </template>
@@ -33,6 +34,7 @@ import tab from './childDetail/tab'
 import shopInfo from './childDetail/shopInfo'
 import DetailInfo from './childDetail/Detail-Info.vue'
 import backTop from '../../components/common/backTop/backTop'
+import tabbar from './childDetail/tab-bar'
 
 import Scroll from '../../components/common/scroll/Scroll'
 
@@ -44,7 +46,7 @@ export default {
     }
   },
   components: {
-    DetailSwiper, navbar, tab, shopInfo, DetailInfo, Scroll, backTop,
+    DetailSwiper, navbar, tab, shopInfo, DetailInfo, Scroll, backTop, tabbar,
 
   },
   created () {
@@ -75,9 +77,8 @@ export default {
 
 <style scoped>
 .left {
-  width: 100%;
-  height: 100%;
-  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
 }
 .scroll {
   overflow: hidden;

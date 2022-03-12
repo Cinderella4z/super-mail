@@ -14,7 +14,7 @@
         <div>主页</div>
       </template>
     </tab-bar-item>
-    <tab-bar-item path="/sort">
+    <!-- <tab-bar-item path="/sort">
       <template slot="item-icon">
         <img src="../../../assets/images/tabbar/icon02.png"
              alt="">
@@ -26,7 +26,7 @@
       <template slot="item-text">
         <div>分类</div>
       </template>
-    </tab-bar-item>
+    </tab-bar-item> -->
     <tab-bar-item path="cart">
       <template slot="item-icon">
         <img src="../../../assets/images/tabbar/icon03.png"

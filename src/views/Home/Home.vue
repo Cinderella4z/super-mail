@@ -5,23 +5,34 @@
       <div slot="center">购物街</div>
     </nav-bar>
 
+    <Tabcontrol @tab="tab"
+                class="tabcontrol1"
+                v-show="isShow"
+                ref="tabcontrol1"></Tabcontrol>
+
     <scroll class="scroll"
             :PullUpLoad="true"
+            @scrolling="scrolling"
             @pullLoad="pullLoad"
-            @showBackTop="showBackTop"
             ref="scroll">
       <!-- 滚动条 -->
       <home-swiper :banners="banners" />
       <!-- 推荐 -->
       <home-recommends :recommends="recommends"></home-recommends>
       <!-- 切换栏 -->
-      <Tabcontrol @tab="tab"></Tabcontrol>
+      <Tabcontrol @tab="tab"
+                  ref="tabcontrol2"></Tabcontrol>
+
       <!-- 商品栏 -->
-      <GoodsList :goods="currentGoods"></GoodsList>
+      <keep-alive>
+        <GoodsList :goods="currentGoods"></GoodsList>
+      </keep-alive>
+
     </scroll>
 
     <backTop ref="backTop"
              @click.native="backTop"></backTop>
+
   </div>
 </template>
 
@@ -36,7 +47,6 @@ import backTop from '../../components/common/backTop/backTop'
 
 import { getHomeMutidata, getHomeGoods } from '../../network/home'
 // import { debounce } from '../../common/js/debounce'
-
 export default {
   name: 'Home',
   data () {
@@ -49,6 +59,7 @@ export default {
         'sell': { list: [], page: 0 },
         'new': { list: [], page: 0 }
       },
+      isShow: false
     }
   },
   created () {
@@ -65,31 +76,38 @@ export default {
     })
 
 
+
   },
   components: {
-    NavBar, HomeSwiper, HomeRecommends, Tabcontrol, GoodsList, scroll, backTop
+    NavBar, HomeSwiper, HomeRecommends, Tabcontrol, GoodsList, scroll, backTop,
   },
   methods: {
     // 事件监听
-    tab (k) {
+    tab (k, i) {
       this.tabname = k
+      this.$refs.tabcontrol1.current = i
+      this.$refs.tabcontrol2.current = i
     },
     pullLoad () {
       this.$refs.scroll.scroll.finishPullUp()
       this.getHomeGoods(this.tabname);
     },
-    showBackTop (bool) {
-      if (bool) {
-        this.$refs.backTop.$el.style.display = 'block'
-      }
-      else {
-        this.$refs.backTop.$el.style.display = 'none'
-      }
-    },
     backTop () {
       this.$refs.scroll.scrollTo(0, 0, 500)
     },
+    scrolling (p) {
+      // console.log(p);
+      if (p >= this.$refs.tabcontrol2.$el.offsetTop) {
+        this.isShow = true
+        this.$refs.backTop.$el.style.display = 'block'
 
+      }
+      else {
+        this.isShow = false
+        this.$refs.backTop.$el.style.display = 'none'
+      }
+
+    },
     // 网络封装
     getHomeMutidata () {
       getHomeMutidata().then(res => {
@@ -125,5 +143,11 @@ export default {
   right: 0;
   top: 44px;
   bottom: 49px;
+}
+.tabcontrol1 {
+  position: fixed;
+  top: 44px;
+  left: 0;
+  right: 0;
 }
 </style>

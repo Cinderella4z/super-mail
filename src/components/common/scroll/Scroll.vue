@@ -35,7 +35,7 @@ export default {
     })
     // 判断是否滑动到 某个地方 然后显示backtop
     this.scroll.on('scroll', (p) => {
-      -p.y > 800 ? this.$emit('showBackTop', true) : this.$emit('showBackTop', false)
+      this.$emit('scrolling', -p.y)
     })
   },
   methods: {

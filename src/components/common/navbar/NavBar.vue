@@ -22,6 +22,9 @@ export default {
   },
   components: {
 
+  },
+  methods: {
+
   }
 }
 </script>
@@ -44,7 +47,12 @@ export default {
 .right,
 .left {
   width: 60px;
+  display: flex;
+  align-items: center;
   /* background-color: aquamarine; */
+}
+.left img {
+  width: 50%;
 }
 .center {
   flex: 1;
