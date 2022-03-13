@@ -32,7 +32,6 @@ export default {
   methods: {
     showGoods (item) {
       getDetail(item.iid).then(res => {
-        // console.log(res);
         this.$router.push({
           path: 'detail',
           query: {

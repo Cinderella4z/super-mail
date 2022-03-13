@@ -10,6 +10,8 @@ Vue.prototype.$bus = new Vue();
 Vue.use(toest)
 Vue.use(router)
 
+console.log(localStorage);
+
 
 new Vue({
   el: '#app',

@@ -4,7 +4,7 @@
       <div slot="left"
            class="left"
            @click="back">
-        <img src="../../assets/images/left.png">
+        <img src="../../assets/images/back1.png">
       </div>
     </navbar>
 
@@ -51,7 +51,7 @@ export default {
   },
   created () {
     this.data = this.$route.query.data
-    console.log(this.data);
+
   },
   mounted () {
     this.$bus.$on('DetailloadImg', () => {

@@ -1,7 +1,8 @@
 <template>
   <div id="item">
 
-    <div class="imgs"><img :src="good.itemInfo.topImages[0]"></div>
+    <div class="imgs"><img :src="good.itemInfo.topImages[0]"
+           @load="Load"></div>
     <div class="title">{{good.itemInfo.title}}</div>
     <div class="price">￥{{good.itemInfo.lowPrice}}</div>
     <div class="num">x{{good.itemInfo.cartNum}}</div>
@@ -25,6 +26,9 @@ export default {
   methods: {
     deleteGood () {
       this.$store.dispatch('deleteGood', this.good.itemInfo.iid)
+    },
+    Load () {
+      this.$bus.$emit('cartLoad')
     }
   },
   components: {

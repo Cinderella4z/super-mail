@@ -3,7 +3,7 @@
     <navbar>
       <div slot="left"
            class="left"
-           @click="back"> <img src="../../assets/images/left.png">
+           @click="back"> <img src="../../assets/images/back1.png">
       </div>
 
       <template slot="center">购物车 ({{nums}})</template>
@@ -42,6 +42,15 @@ export default {
       }
       else {
         this.$toest.show('购买成功', 2000)
+        let id = this.$store.state.id
+
+        if (id) {
+          let newObj = JSON.parse(localStorage.getItem(id))
+
+          newObj.goods.push(...this.$store.state.cart)
+
+          localStorage.setItem(id, JSON.stringify(newObj))
+        }
         this.$store.commit('removeAllGoods')
       }
 
@@ -61,13 +70,15 @@ export default {
       return this.$store.state.cart.length && this.$store.getters.getAllprice.reduce((a, b) => a + b).toFixed(2)
     }
 
-  }
+  },
+
 }
 </script>
 
-<style>
+<style scoped>
 #Cart {
   height: 100vh;
+  position: relative;
 }
 .left {
   display: flex;

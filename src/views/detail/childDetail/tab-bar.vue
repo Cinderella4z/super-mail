@@ -35,7 +35,17 @@ export default {
     },
     buy () {
       this.$toest.show('购买成功', 2000)
+      let id = this.$store.state.id
+      if (id) {
+        let newObj = JSON.parse(localStorage.getItem(id))
 
+        newObj.goods.push(this.good)
+
+        // console.log(newObj);
+        localStorage.setItem(id, JSON.stringify(newObj))
+        console.log(localStorage);
+
+      }
     }
 
   }
